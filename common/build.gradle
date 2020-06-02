@@ -1,34 +1,79 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
+
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+
+    compileSdkVersion build_versions.build_compile
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        applicationId "com.zq.common"
-        minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.version_code
+        versionName build_versions.version_name
     }
 
     buildTypes {
         release {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            zipAlignEnabled false
+            shrinkResources false
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+
+    // Support libraries
+    api deps.support.app_compat
+    api deps.support.v4
+    api deps.support.v13
+    api deps.support.design
+    api deps.support.cardview
+    api deps.support.percent
+    api deps.support.recyclerview
+    api deps.constraint_layout
+
+    // RxJava and retrofit
+    api deps.rx_android
+    api deps.rxjava2
+    api deps.retrofit.runtime
+    api deps.retrofit.gson
+//    api deps.persistent_cookie
+
+    //Dagger
+    api deps.dagger.runtime
+    api deps.dagger.android
+    api deps.dagger.android_support
+
+    // other
+//    api deps.kotlin.stdlib
+    api deps.event_bus
+    api deps.gson
+//    api deps.permission
+//    api deps.utils
+    api deps.glide
+
+    //view
+//    api deps.photo_view
+//    api deps.easy_recycler
+//    api deps.material_dialog
+    api deps.logger
+//    api deps.toasty
+
+
+
+    //annotationProcessor
+    annotationProcessor deps.dagger.android_support_compiler
+    annotationProcessor deps.dagger.compiler
+
+    api deps.junit
+    api deps.test.ext_junit
+    api deps.test.espresso
 }

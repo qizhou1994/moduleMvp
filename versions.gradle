@@ -3,15 +3,110 @@
  * maven repositories.
  **/
 ext.deps = [:]
+//版本控制
+def versions =[:]
+versions.retrofit = "2.3.0"
+versions.support = "27.0.2"
+versions.constraint_layout = "1.0.2"
+
+versions.android_gradle_plugin = "3.5.1"
+
+//图片加载
+versions.glide = "3.8.0"
+//rx
+versions.rx_java2 = "2.1.7"
+versions.rx_android ="2.0.1"
+//json解析
+versions.gson = "2.8.2"
+//日志
+versions.logger = "1.15"
+//Arouter
+versions.arouter_compiler = "1.1.4"
+versions.arouter_api = "1.3.1"
+//消息处理
+versions.event_bus = "3.1.1"
+//网络加载
+versions.retrofit = "2.3.0"
+versions.multidex = "1.0.2"
+versions.dagger = "2.11"
+//test
+versions.test_runner = "1.1.1"
+versions.test_junit = "1.1.1"
+
+def deps = [:]
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.adapter = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofi"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+deps.retrofit = retrofit
+
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
+deps.dagger = dagger
 
 
-def addRepos(RepositoryHandler handler) {
+def support = [:]
+support.annotations = "com.android.support:support-annotations:$versions.support"
+support.app_compat = "com.android.support:appcompat-v7:$versions.support"
+support.v13 = "com.android.support:support-v13:$versions.support"
+support.percent = "com.android.support:percent:$versions.support"
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+support.cardview = "com.android.support:cardview-v7:$versions.support"
+support.design = "com.android.support:design:$versions.support"
+support.v4 = "com.android.support:support-v4:$versions.support"
+support.core_utils = "com.android.support:support-core-utils:$versions.support"
+support.multidex = "com.android.support:multidex:$versions.multidex"
+deps.support = support
+
+def test = [:]
+test.espresso = 'androidx.test.espresso:espresso-core:3.2.0'
+test.runner = "androidx.test:runner:$versions.test_runner"
+test.ext_junit = "androidx.test.ext:junit:$versions.test_junit"
+deps.test = test
+deps.junit = "junit:junit:$versions.junit"
+
+//view
+deps.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+
+//统一管理
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+
+deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
+deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
+
+deps.glide = "com.github.bumptech.glide:glide:$versions.glide"
+deps.event_bus = "org.greenrobot:eventbus:$versions.event_bus"
+deps.gson = "com.google.code.gson:gson:$versions.gson"
+deps.logger = "com.orhanobut:logger:$versions.logger"
+
+deps.arouter_api = "com.alibaba:arouter-api:$versions.arouter_api"
+deps.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+
+ext.deps = deps
+
+def build_versions = [:]
+build_versions.min_sdk = 16
+build_versions.target_sdk = 28
+build_versions.build_tools = "28.0.3"
+build_versions.build_compile = 29
+build_versions.version_code = 1
+build_versions.version_name = "1.0"
+ext.build_versions = build_versions
+
+
+static def addRepos(RepositoryHandler handler) {
+    //Add the JitPack repository
+    handler.maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    handler.maven { url "https://jitpack.io" }
     handler.google()
     handler.jcenter()
     handler.mavenCentral()
-    //Add the JitPack repository
-    handler.maven { url "https://jitpack.io" }
-    handler.maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+
 }
 
 ext.addRepos = this.&addRepos
