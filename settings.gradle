@@ -1,3 +1,2 @@
-include ':common',':basemvp',':index',':app'
-//include ':basemvp',':mine'
-//include ':other'
+include ':common',':basemvp',':index',':app',':mine',':other'
+
