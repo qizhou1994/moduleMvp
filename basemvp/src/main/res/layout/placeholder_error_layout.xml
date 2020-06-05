@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_place_holder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/place_holder_top_margin"
+        android:src="@drawable/http_error"
+        tools:src="@drawable/http_error" />
+
+    <TextView
+        android:id="@+id/tv_place_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_place_holder"
+        style="@style/PlaceHolder.Tips"
+        tools:text="@string/widget_name" />
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_navi_bar_height">45dp</dimen>
+    <dimen name="tips_width" />
+    <dimen name="vertical_gap" />
+    <dimen name="tips_icon_width" />
+    <dimen name="tips_text_top_margin" />
+    <dimen name="place_holder_top_margin">86dp</dimen>
+    <dimen name="toast_icon_bg_radius">5dp</dimen>
+</resources>

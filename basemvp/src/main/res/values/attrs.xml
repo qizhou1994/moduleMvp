@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AppNaviBar">
+        <attr name="android:text"/>
+        <attr name="android:textColor"/>
+        <attr name="android:background"/>
+        <attr name="leftIcon" format="reference"/>
+        <attr name="rightIcon" format="reference"/>
+        <attr name="leftContent" format="reference"/>
+        <attr name="middleContent" format="reference"/>
+        <attr name="rightContent" format="reference"/>
+    </declare-styleable>
+</resources>

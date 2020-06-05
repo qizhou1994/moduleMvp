@@ -1,0 +1,22 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/FragmentContainer">
+
+    <FrameLayout
+        android:id="@+id/fl_index_fragment_container"
+        android:layout_above="@id/bnve"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        android:id="@+id/bnve"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_navigation_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bg_bottom_navibar"
+        app:itemTextColor="@color/index_navi_text"
+        app:itemIconSize="@dimen/bottom_navigation_icon_size"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/index_btm_tab" />
+
+</RelativeLayout>

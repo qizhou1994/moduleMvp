@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@id/app_nav_bar_middle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@id/app_nav_bar_title"
+            style="@style/AppNaviBar.Title"
+            android:layout_width="match_parent"
+            tools:text="Title" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@id/app_nav_bar_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@id/app_nav_bar_icon_left"
+            style="@style/AppNaviBar.LeftIcon"
+            android:src="@drawable/back" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@id/app_nav_bar_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true">
+
+        <ImageView
+            android:id="@id/app_nav_bar_icon_right"
+            style="@style/AppNaviBar.RightIcon"
+            tools:src="@drawable/navi_more" />
+    </FrameLayout>
+</merge>

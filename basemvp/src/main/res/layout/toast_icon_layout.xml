@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/tips_width"
+    android:layout_height="@dimen/tips_width"
+    android:minWidth="90dp"
+    android:minHeight="90dp"
+    android:background="@drawable/toast_icon_border"
+    android:paddingTop="@dimen/vertical_gap"
+    android:paddingBottom="@dimen/vertical_gap">
+
+    <ImageView
+        android:id="@+id/iv_toast_tips"
+        android:layout_width="@dimen/tips_icon_width"
+        android:layout_height="@dimen/tips_icon_width"
+        android:layout_alignParentTop="true"
+        tools:src="@drawable/mine_head"
+        android:layout_centerHorizontal="true" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="@dimen/tips_icon_width"
+        android:layout_height="@dimen/tips_icon_width"
+        android:layout_below="@id/iv_toast_tips"
+        android:layout_centerHorizontal="true"
+        android:indeterminateBehavior="repeat"
+        android:indeterminateDrawable="@drawable/circle_loading"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <TextView
+        style="@style/Toast.Dialog"
+        android:layout_below="@id/progress_bar"
+        android:layout_marginTop="@dimen/tips_text_top_margin"
+        android:textColor="@color/white"
+        tools:text="@string/common_name" />
+</RelativeLayout>

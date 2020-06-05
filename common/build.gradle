@@ -1,29 +1,5 @@
-apply plugin: 'com.android.library'
-
 
 android {
-
-    compileSdkVersion build_versions.build_compile
-    buildToolsVersion build_versions.build_tools
-
-    defaultConfig {
-        minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.target_sdk
-        versionCode build_versions.version_code
-        versionName build_versions.version_name
-    }
-
-    buildTypes {
-        release {
-            buildConfigField "boolean", "LOG_DEBUG", "true"
-            zipAlignEnabled false
-            shrinkResources false
-            minifyEnabled false
-            debuggable true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
 }
 
 
@@ -45,7 +21,6 @@ dependencies {
     api deps.rxjava2
     api deps.retrofit.runtime
     api deps.retrofit.gson
-//    api deps.persistent_cookie
 
     //Dagger
     api deps.dagger.runtime
@@ -53,27 +28,40 @@ dependencies {
     api deps.dagger.android_support
 
     // other
-//    api deps.kotlin.stdlib
     api deps.event_bus
     api deps.gson
-//    api deps.permission
-//    api deps.utils
     api deps.glide
 
     //view
-//    api deps.photo_view
-//    api deps.easy_recycler
-//    api deps.material_dialog
     api deps.logger
-//    api deps.toasty
 
+    api deps.butterknife.core
 
+    api deps.mmkv
+
+    api deps.bugly_crashreport
+    api deps.bugly_nativecrashreport
 
     //annotationProcessor
     annotationProcessor deps.dagger.android_support_compiler
     annotationProcessor deps.dagger.compiler
 
-    api deps.junit
-    api deps.test.ext_junit
-    api deps.test.espresso
+    //fragment
+//    api deps.fragmentation
+    api deps.fragmentationx
+    api deps.fragmentationx_core
+    api deps.fragmentationx_swipe
+
+    api deps.autosize
+    // rx binding
+    api deps.rxbinding.rxbinding
+
+    api deps.SmartRefreshLayout
+    api deps.SmartRefreshHeader
+
+    api deps.BottomNavigationViewEx
+
+    testApi deps.junit
+    androidTestApi deps.test.ext_junit
+    androidTestApi deps.test.espresso
 }

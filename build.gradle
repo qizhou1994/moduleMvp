@@ -9,7 +9,9 @@ buildscript {
     dependencies {
         /* classpath deps.android_gradle_plugin*/
         classpath deps.android_gradle_plugin
-
+        classpath deps.butterknife_gradle_plugin
+        classpath deps.arouter.core
+        classpath deps.bugly_symtabfileuploader
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -17,27 +19,61 @@ buildscript {
 }
 
 allprojects {
-
     addRepos(repositories)
     // Android dependency 'com.android.support:design' has different version for the compile (25.3.1) and runtime (25.4.0) classpath.
     // You should manually set the same version via DependencyResolution
-    subprojects {
-        project.configurations.all {
-            resolutionStrategy.eachDependency { details ->
-                if (details.requested.group == 'com.android.support'
-                        && !details.requested.name.contains('multidex')) {
-                    details.useVersion build_versions.build_tools
-                }
-            }
+
+    // 组件缓存更新时间设置（默认每次build都更新）
+    /*   configurations.all {
+           resolutionStrategy.cacheChangingModulesFor 0, 'minutes'
+       }*/
+
+}
+
+subprojects {
+    /*  project.configurations.all {
+          resolutionStrategy.eachDependency { details ->
+              if (details.requested.group == 'com.android.support'
+                      && !details.requested.name.contains('multidex')) {
+                  details.useVersion build_versions.build_tools
+              }
+          }
+      }*/
+    if (name == "app") {
+        apply plugin: 'com.android.application'
+    } else {
+        if (isModule.toBoolean()) {
+            apply plugin: 'com.android.application'
+        } else {
+            apply plugin: 'com.android.library'
         }
     }
 
-    // 组件缓存更新时间设置（默认每次build都更新）
-    configurations.all {
-        resolutionStrategy.cacheChangingModulesFor 0, 'minutes'
-    }
+    android {
+        compileSdkVersion build_versions.build_compile
+        buildToolsVersion build_versions.build_tools
 
+        defaultConfig {
+            minSdkVersion build_versions.min_sdk
+            targetSdkVersion build_versions.target_sdk
+            versionCode build_versions.version_code
+            versionName build_versions.version_name
+            buildConfigField "String", "BUG_APP_ID", '"ccb5fea8ab"'
+            buildConfigField "boolean", "AUTO_SIZE", "true"
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments = [AROUTER_MODULE_NAME: project.getName()]
+                }
+            }
+        }
+
+        compileOptions {
+            sourceCompatibility = 1.8
+            targetCompatibility = 1.8
+        }
+    }
 }
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir

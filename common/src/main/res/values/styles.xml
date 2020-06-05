@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="FragmentContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/window_background_dark</item>
+    </style>
+
+    <color name="window_background_dark">#ffffff</color>
 </resources>

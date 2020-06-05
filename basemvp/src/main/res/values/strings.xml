@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">basemvp</string>
+    <string name="common_name">Common</string>
+    <string name="widget_name">Widget</string>
 </resources>

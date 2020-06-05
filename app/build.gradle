@@ -1,10 +1,17 @@
-apply plugin: 'com.android.application'
 
 static def buildTime() {
     return new Date().format("yyyyMMdd");
 }
-
-
+/*apply plugin: 'bugly'
+bugly {
+    appId = 'ccb5fea8ab'
+    appKey = 'f7208380-fff3-467a-8d03-bae9cd8a7092'
+}*/
+apply plugin: 'bugly'
+bugly {
+    appId = 'ccb5fea8ab'
+    appKey = 'f7208380-fff3-467a-8d03-bae9cd8a7092'
+}
 android {
     signingConfigs {
         release {
@@ -14,26 +21,17 @@ android {
             storePassword '123456'
         }
     }
-
-
-    compileSdkVersion build_versions.build_compile
-    buildToolsVersion build_versions.build_tools
-
+    // env setup
+    flavorDimensions "app"
     defaultConfig {
         applicationId "com.zq.modulemvp"
-        minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.target_sdk
-        versionCode build_versions.version_code
-        versionName build_versions.version_name
-        multiDexEnabled false
+        multiDexEnabled true
         //打包时间
         resValue "string", "build_time", buildTime()
     }
 
-
     buildTypes {
         release {
-
             //更改AndroidManifest.xml中预先定义好占位符信息
             //manifestPlaceholders = [app_icon: "@drawable/icon"]
             // 不显示Log
@@ -49,10 +47,9 @@ android {
             signingConfig signingConfigs.release
         }
 
-
         debug {
             //给applicationId添加后缀“.debug”
-            applicationIdSuffix ".debug"
+//            applicationIdSuffix ".debug"
             //manifestPlaceholders = [app_icon: "@drawable/launch_beta"]
             buildConfigField "boolean", "LOG_DEBUG", "true"
             zipAlignEnabled false
@@ -60,9 +57,7 @@ android {
             minifyEnabled false
             debuggable true
         }
-
     }
-
 
 }
 
@@ -71,14 +66,12 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.support.multidex
-
-    if (isModule.toBoolean()) {
-        implementation project(':basemvp')
-    } else {
+    implementation project(':basemvp')
+//    annotationProcessor deps.arouter.compiler
+    if (!isModule.toBoolean()) {
 //        compile project(':other')
         implementation project(':index')
 //        compile project(':mine')
     }
-//    annotationProcessor deps.arouter_compiler
 
 }

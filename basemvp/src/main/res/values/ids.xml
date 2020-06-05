@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="common_fake_status_bar_view" type="id"/>
+    <item name="common_translucent_view" type="id"/>
+
+
+    <item name="app_nav_bar" type="id"/>
+    <item name="app_nav_bar_title" type="id"/>
+    <item name="app_nav_bar_left" type="id"/>
+    <item name="app_nav_bar_middle" type="id"/>
+    <item name="app_nav_bar_right" type="id"/>
+    <item name="app_nav_bar_icon_left" type="id"/>
+    <item name="app_nav_bar_icon_right" type="id"/>
+    <item name="app_nav_bar_text_right" type="id"/>
+    <item name="app_nav_bar_text_left" type="id"/>
+</resources>

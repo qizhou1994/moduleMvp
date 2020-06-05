@@ -1,10 +1,7 @@
-if (isModule.toBoolean()) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-}
 
 
+// ButterKnife
+apply plugin: 'com.jakewharton.butterknife'
 android {
 
     compileSdkVersion build_versions.build_compile
@@ -17,7 +14,7 @@ android {
         versionCode build_versions.version_code
         versionName build_versions.version_name
 
-      /*  javaCompileOptions {
+        /*  javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
@@ -30,7 +27,7 @@ android {
                 manifest.srcFile 'src/main/module/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
-            //集成开发模式下排除debug文件夹中的所有Java文件
+                //集成开发模式下排除debug文件夹中的所有Java文件
                 java {
                     exclude 'debug/**'
                 }
@@ -50,7 +47,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":basemvp")
-//    annotationProcessor deps.arouter_compiler
+//    annotationProcessor deps.arouter.compiler
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-
+//    api deps.arouter.api
+    annotationProcessor deps.arouter.compiler
 }
