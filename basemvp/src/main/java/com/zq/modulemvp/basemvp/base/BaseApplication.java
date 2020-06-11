@@ -22,6 +22,7 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mmkv.MMKV;
+import com.zq.modulemvp.basemvp.AppData;
 import com.zq.modulemvp.basemvp.R;
 import com.zq.modulemvp.basemvp.util.ActivityStackUtil;
 import com.zq.modulemvp.basemvp.util.AppUtil;
@@ -57,19 +58,15 @@ public class BaseApplication extends Application {
 
     private ConnectivityManager.NetworkCallback mNetCallback = new NetCallback();
 
-    private static BaseApplication sInstance;
 
-    private List<IApplicationDelegate> mAppDelegateList;
-    public static BaseApplication getContext() {
-        return sInstance;
-    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        sInstance = this;
+
         Logger.init("pattern").logLevel(LogLevel.FULL);
         AppUtil.init(this);
+        AppData.initContext(this);
         MMKV.initialize(this);
         final boolean isMainProcess = isMainProcess();
         initARouter(isMainProcess);
@@ -87,12 +84,6 @@ public class BaseApplication extends Application {
         }
 
         initPlaceHolder();
-        mAppDelegateList = ClassUtils.getObjectsWithInterface(this, IApplicationDelegate.class, ROOT_PACKAGE);
-        for (IApplicationDelegate delegate : mAppDelegateList) {
-            delegate.onCreate();
-        }
-
-
 
     }
 
@@ -230,7 +221,7 @@ public class BaseApplication extends Application {
                         capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED));
             } else {
                 AppUtil.updateNetState(network,
-                        AppUtil.isNetWorkAvailable(BaseApplication.getContext()));
+                        AppUtil.isNetWorkAvailable(AppUtil.getContext()));
             }
         }
     }
@@ -264,28 +255,4 @@ public class BaseApplication extends Application {
         return null;
     }
 
-    @Override
-    public void onTerminate() {
-        super.onTerminate();
-        for (IApplicationDelegate delegate : mAppDelegateList) {
-            delegate.onTerminate();
-        }
-    }
-
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        for (IApplicationDelegate delegate : mAppDelegateList) {
-            delegate.onLowMemory();
-        }
-    }
-
-    @Override
-    public void onTrimMemory(int level) {
-        super.onTrimMemory(level);
-        for (IApplicationDelegate delegate : mAppDelegateList) {
-            delegate.onTrimMemory(level);
-        }
-    }
 }

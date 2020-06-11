@@ -54,6 +54,8 @@ versions.bugly = "latest.release"
 versions.bugly_native = "latest.release"
 versions.bugly_uploader = "latest.release"
 
+versions.watchtower = '1.1.0'
+
 
 def deps = [:]
 
@@ -68,10 +70,18 @@ rxbinding.rxbinding = "com.jakewharton.rxbinding2:rxbinding:$versions.rxbinding"
 rxbinding.rxbinding3 = "com.jakewharton.rxbinding3:rxbinding:$versions.rxbinding3"
 deps.rxbinding = rxbinding
 
+def watchtower = [:]
+watchtower.core = "com.snakyapps.watchtower:core:$versions.watchtower"
+watchtower.debug_interceptor = "com.snakyapps.watchtower:interceptor-okhttp:$versions.watchtower"
+watchtower.releas_interceptor = "com.snakyapps.watchtower:interceptor-okhttp-no-op:$versions.watchtower"
+deps.watchtower = watchtower
+
+
 def retrofit = [:]
 retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
-retrofit.adapter = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofi"
+retrofit.adapter = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
 retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.scalars = "com.squareup.retrofit2:converter-scalars:$versions.retrofit"
 deps.retrofit = retrofit
 
 def dagger = [:]
@@ -133,7 +143,7 @@ deps.fragmentationx = "me.yokeyword:fragmentationx:$versions.fragmentationx"
 deps.fragmentationx_core = "me.yokeyword:fragmentationx-core:$versions.fragmentationx"
 deps.fragmentationx_swipe = "me.yokeyword:fragmentationx-swipeback:$versions.fragmentationx"
 //butterknife
-deps.butterknife_gradle_plugin = "com.jakewharton:butterknife-gradle-plugin:9.0.0-rc2"
+deps.butterknife_gradle_plugin = "com.jakewharton:butterknife-gradle-plugin:10.1.0"
 deps.kotterknife = "com.jakewharton:kotterknife:0.1.0-SNAPSHOT"
 
 deps.mmkv = 'com.tencent:mmkv:1.0.14'
@@ -155,7 +165,7 @@ deps.BottomNavigationViewEx = "com.github.ittianyu:BottomNavigationViewEx:2.0.4"
 ext.deps = deps
 
 def build_versions = [:]
-build_versions.min_sdk = 16
+build_versions.min_sdk = 17
 build_versions.target_sdk = 28
 build_versions.build_tools = "28.0.3"
 build_versions.build_compile = 28

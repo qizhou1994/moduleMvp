@@ -21,6 +21,8 @@ dependencies {
     api deps.rxjava2
     api deps.retrofit.runtime
     api deps.retrofit.gson
+    api deps.retrofit.scalars
+    api deps.retrofit.adapter
 
     //Dagger
     api deps.dagger.runtime
@@ -36,7 +38,7 @@ dependencies {
     api deps.logger
 
     api deps.butterknife.core
-
+    annotationProcessor deps.butterknife.compiler
     api deps.mmkv
 
     api deps.bugly_crashreport
@@ -61,7 +63,7 @@ dependencies {
 
     api deps.BottomNavigationViewEx
 
-    testApi deps.junit
-    androidTestApi deps.test.ext_junit
-    androidTestApi deps.test.espresso
+    testImplementation deps.junit
+    androidTestImplementation deps.test.ext_junit
+    androidTestImplementation deps.test.espresso
 }

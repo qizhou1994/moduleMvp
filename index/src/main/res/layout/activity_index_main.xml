@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     >
 
-   <fragment
-       android:id="@+id/t_fragment"
+   <FrameLayout
+       android:id="@+id/fl"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:name="com.zq.modulemvp.index.MainFragment"/>

@@ -154,9 +154,12 @@ public class AppUtil {
 
     public static String getMetaDataByKey(@NonNull Context context, String key) {
         ApplicationInfo appInfo;
+        AppLog.e("getMetaDataByKey key:" + key);
+
         try {
             appInfo = context.getPackageManager()
                     .getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            AppLog.e("appInfo.metaData.getString(key)" + appInfo.metaData.getString(key));
             return appInfo.metaData.getString(key);
 
         } catch (Exception e) {

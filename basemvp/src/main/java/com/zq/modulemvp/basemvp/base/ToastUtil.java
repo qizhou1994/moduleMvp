@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.zq.modulemvp.basemvp.R;
+import com.zq.modulemvp.basemvp.util.AppUtil;
 
 /**
  * desc
@@ -40,7 +41,7 @@ public class ToastUtil {
     }
 
     private static Toast makeToast(@NonNull CharSequence message, int duration) {
-        Context context = BaseApplication.getContext();
+        Context context = AppUtil.getContext();
         if (isBefore810()) {
             mToast = null;
         }

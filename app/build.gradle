@@ -13,6 +13,17 @@ bugly {
     appKey = 'f7208380-fff3-467a-8d03-bae9cd8a7092'
 }
 android {
+
+    defaultConfig {
+        applicationId "com.zq.modulemvp"
+        multiDexEnabled true
+        //打包时间
+        resValue "string", "build_time", buildTime()
+        buildConfigField "boolean", "AUTO_SIZE", "true"
+        buildConfigField "String", "BUG_APP_ID", '"ccb5fea8ab"'
+    }
+
+
     signingConfigs {
         release {
             keyAlias 'moduleMvpKey'
@@ -20,14 +31,6 @@ android {
             storeFile file('../moduleMvp.jks')
             storePassword '123456'
         }
-    }
-    // env setup
-    flavorDimensions "app"
-    defaultConfig {
-        applicationId "com.zq.modulemvp"
-        multiDexEnabled true
-        //打包时间
-        resValue "string", "build_time", buildTime()
     }
 
     buildTypes {
@@ -59,6 +62,27 @@ android {
         }
     }
 
+    // env setup
+    flavorDimensions "app"
+    productFlavors {
+        Prd {
+            dimension "app"
+            manifestPlaceholders = [
+                    "SERVER_URL" : "http://v.juhe.cn/toutiao",
+                    "APP_CHANNEL": "Product"
+            ]
+        }
+        Dev {
+            dimension "app"
+            manifestPlaceholders = [
+                    "SERVER_URL" : "http://v.juhe.cn/toutiao",
+                    "APP_CHANNEL": "Test"
+            ]
+        }
+
+
+    }
+
 }
 
 
@@ -71,7 +95,7 @@ dependencies {
     if (!isModule.toBoolean()) {
 //        compile project(':other')
         implementation project(':index')
-//        compile project(':mine')
+//        implementation project(':mine')
     }
 
 }

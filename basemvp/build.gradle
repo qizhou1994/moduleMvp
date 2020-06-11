@@ -23,5 +23,12 @@ android {
 
         api deps.arouter.api
         annotationProcessor deps.arouter.compiler
+        implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+        implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+//Cookie持久化管理(推荐)
+        implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+
+        debugImplementation deps.watchtower.debug_interceptor
+        releaseImplementation deps.watchtower.releas_interceptor
     }
 }

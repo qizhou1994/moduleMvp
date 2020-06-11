@@ -52,4 +52,5 @@ public class Config {
     public static final int COIN_TYPE_FN = 2;
 
     public static final int PAGE_SIZE = 20;
+    public static final int API_NET_LOST = -400;
 }
