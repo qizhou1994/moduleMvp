@@ -15,4 +15,17 @@
     </style>
 
     <color name="window_background_dark">#ffffff</color>
+
+    <!--dash line-->
+    <declare-styleable name="DashLineView">
+        <attr name="dashlineColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ShadowImageView">
+        <attr name="shadow_color" format="color"/>
+        <attr name="shadow_width" format="integer"/>
+        <attr name="shadow_alpha" format="float"/>
+        <attr name="image_fram_width" format="integer"/>
+        <attr name="image_fram_color" format="color"/>
+    </declare-styleable>
 </resources>

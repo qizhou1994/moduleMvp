@@ -1,12 +1,14 @@
-
 static def buildTime() {
     return new Date().format("yyyyMMdd");
 }
-/*apply plugin: 'bugly'
-bugly {
-    appId = 'ccb5fea8ab'
-    appKey = 'f7208380-fff3-467a-8d03-bae9cd8a7092'
-}*/
+
+/**
+ * 获取Git 分支名
+ */
+def getGitBranch() {
+    return 'git symbolic-ref --short -q HEAD'.execute().text.trim()
+}
+
 apply plugin: 'bugly'
 bugly {
     appId = 'ccb5fea8ab'
@@ -34,6 +36,25 @@ android {
     }
 
     buildTypes {
+        //Android apk package na
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                // && outputFile.name.indexOf('debug') == -1
+                if (outputFile != null && outputFile.name.endsWith('.apk')
+                        && outputFile.name.indexOf('debug') == -1) {
+                    output.outputFileName = ("${project.name}_v${getGitBranch()}_vn${defaultConfig.versionName}" +
+                            "_t${buildTime()}.apk")
+//                    output.outputFileName = new File(fileName)
+                }
+                //not release
+                if (outputFile != null && outputFile.name.endsWith('.apk')
+                        && outputFile.name.indexOf('release') == -1) {
+                    output.outputFileName = ("${project.name}_v${getGitBranch()}_vn${defaultConfig.versionName}" +
+                            "_t${buildTime()}.apk")
+                }
+            }
+        }
         release {
             //更改AndroidManifest.xml中预先定义好占位符信息
             //manifestPlaceholders = [app_icon: "@drawable/icon"]

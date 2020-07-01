@@ -169,8 +169,8 @@ build_versions.min_sdk = 17
 build_versions.target_sdk = 28
 build_versions.build_tools = "28.0.3"
 build_versions.build_compile = 28
-build_versions.version_code = 1
-build_versions.version_name = "1.0"
+build_versions.version_code = 111
+build_versions.version_name = "1.1.1.001"
 ext.build_versions = build_versions
 
 
