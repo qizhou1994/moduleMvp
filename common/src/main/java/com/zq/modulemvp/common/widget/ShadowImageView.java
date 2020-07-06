@@ -9,9 +9,13 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.zq.modulemvp.common.R;
 
+/**
+ * @author qizhou
+ */
 public class ShadowImageView extends ImageView {
     private int shadowColor;
     private int shadowWidth;
@@ -38,11 +42,11 @@ public class ShadowImageView extends ImageView {
         if (attrs != null) {
             TypedArray attributes = context.obtainStyledAttributes(attrs,
                     R.styleable.ShadowImageView);
-            shadowColor = attributes.getColor(R.styleable.ShadowImageView_shadow_color, context.getResources().getColor(R.color.image_fram_color));
+            shadowColor = attributes.getColor(R.styleable.ShadowImageView_shadow_color, ContextCompat.getColor(context, R.color.image_fram_color));
             //dp
             shadowWidth = attributes.getInt(R.styleable.ShadowImageView_shadow_width, 2);
             imgFramWidth = attributes.getInt(R.styleable.ShadowImageView_image_fram_width, 1);
-            imgFramColor = attributes.getInt(R.styleable.ShadowImageView_image_fram_color, context.getResources().getColor(R.color.image_shadow_color));
+            imgFramColor = attributes.getInt(R.styleable.ShadowImageView_image_fram_color, ContextCompat.getColor(context, R.color.image_shadow_color));
 
             shadowAlpha = attributes.getFloat(R.styleable.ShadowImageView_shadow_alpha, 1f);
 
