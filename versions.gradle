@@ -55,7 +55,8 @@ versions.bugly_native = "latest.release"
 versions.bugly_uploader = "latest.release"
 
 versions.watchtower = '1.1.0'
-
+//下载的版本
+versions.arialyy_aria = '3.8.12'
 
 def deps = [:]
 
@@ -117,6 +118,15 @@ test.runner = "androidx.test:runner:$versions.test_runner"
 test.ext_junit = "androidx.test.ext:junit:$versions.test_junit"
 deps.test = test
 deps.junit = "junit:junit:$versions.junit"
+
+//下载 https://aria.laoyuyu.me/aria_doc/api/task_handle.html
+def arialyy_aria = [:]
+arialyy_aria.core = "com.arialyy.aria:core:$versions.arialyy_aria"
+arialyy_aria.compiler = "com.arialyy.aria:compiler:$versions.arialyy_aria"
+arialyy_aria.ftpComponent = "com.arialyy.aria:ftpComponent:$versions.arialyy_aria"
+arialyy_aria.sftpComponent = "com.arialyy.aria:sftpComponent:$versions.arialyy_aria"
+arialyy_aria.m3u8Component = "com.arialyy.aria:m3u8Component:$versions.arialyy_aria"
+deps.arialyy_aria = arialyy_aria
 
 //view
 deps.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
