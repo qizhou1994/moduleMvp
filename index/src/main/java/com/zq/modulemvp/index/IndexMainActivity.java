@@ -30,4 +30,9 @@ public class IndexMainActivity extends BaseActivity {
             }
         }
     }
+
+    @Override
+    protected boolean disableSwipeBack() {
+        return true;
+    }
 }

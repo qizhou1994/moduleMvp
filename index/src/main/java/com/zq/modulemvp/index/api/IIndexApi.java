@@ -20,6 +20,6 @@ public interface IIndexApi {
      * 	tiyu(体育)junshi(军事),keji(科技),caijing(财经),shishang(时尚)
      * @return
      */
-    @GET("http://v.juhe.cn/toutiao/index")
-    Flowable<RspNewsListBean> getNewList(@Query("type") String type,@Query("key") String key);
+    @GET("http://api.avatardata.cn/ActNews/Query")
+    Flowable<RspNewsListBean> getNewList(@Query("key") String type,@Query("keyword") String key);
 }

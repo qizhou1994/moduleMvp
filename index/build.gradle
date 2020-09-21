@@ -11,11 +11,6 @@ android {
         versionCode build_versions.version_code
         versionName build_versions.version_name
 
-        /*  javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }*/
     }
     sourceSets {
 
@@ -58,5 +53,12 @@ dependencies {
 
 // 添加 Picasso 图片加载器
     implementation 'com.github.Hitomis.transferee:PicassoImageLoader:1.6.1'
+
+    //添加下载
+    implementation deps.arialyy_aria.core
+    annotationProcessor deps.arialyy_aria.compiler
+    implementation deps.arialyy_aria.ftpComponent // 如果需要使用ftp，请增加该组件
+    implementation deps.arialyy_aria.sftpComponent // 如果需要使用ftp，请增加该组件
+    implementation deps.arialyy_aria.m3u8Component // 如果需要使用m3u8下载功能，请增加该组件
 
 }

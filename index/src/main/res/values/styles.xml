@@ -6,6 +6,16 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+<!--        <item name="android:windowNoTitle">true</item>-->
     </style>
+
+        <!-- wtf TabLayout -->
+        <style name="TabLayout">
+            <item name="tabIndicatorColor">@color/app_dialog_ok</item>
+            <item name="tabIndicatorFullWidth">false</item>
+            <item name="tabRippleColor">@android:color/transparent</item>
+            <item name="tabSelectedTextColor">@color/app_dialog_ok</item>
+            <item name="tabTextColor">@color/main_color_access</item>
+        </style>
 
 </resources>

@@ -107,4 +107,9 @@ public class MainFragment extends BaseFragment {
             mFragments[2] = findFragment(MineFragment.class);
         }
     }
+
+    @Override
+    protected boolean disableSwipeBack() {
+        return true;
+    }
 }

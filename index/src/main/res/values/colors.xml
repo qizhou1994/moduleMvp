@@ -6,4 +6,6 @@
     <color name="bg_bottom_navibar">#ffffff</color>
     <color name="index_navi_text">#000000</color>
     <color name="black">#000000</color>
+    <color name="main_color_access">#999999</color>
+    <color name="app_dialog_ok">#3CB371</color>
 </resources>
